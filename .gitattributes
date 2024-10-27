@@ -2,7 +2,6 @@
 *.so filter=lfs diff=lfs merge=lfs -text
 *.dylib filter=lfs diff=lfs merge=lfs -text
 *.dll filter=lfs diff=lfs merge=lfs -text
-
 # Unity Burst-related files (if needed for your project)
 Library/PackageCache/com.unity.burst@1.8.16/.Runtime/libburst-llvm-16.dylib filter=lfs diff=lfs merge=lfs -text
 Library/PackageCache/com.unity.burst@1.8.16/.Runtime/libburst-llvm-16.so filter=lfs diff=lfs merge=lfs -text
@@ -10,3 +9,4 @@ Library/PackageCache/com.unity.burst@1.8.16/.Runtime/hostmac/dsymutil filter=lfs
 Library/PackageCache/com.unity.burst@1.8.16/.Runtime/burst-llvm-16.dll filter=lfs diff=lfs merge=lfs -text
 Library/PackageCache/com.unity.burst@1.8.16/.Runtime/libburst-llvm-10.dylib filter=lfs diff=lfs merge=lfs -text
 Library/PackageCache/com.unity.burst@1.8.16/.Runtime/burst-llvm-16-arm64.dll filter=lfs diff=lfs merge=lfs -text
+Assets/Scenes/SampleScene.unity filter=lfs diff=lfs merge=lfs -text
