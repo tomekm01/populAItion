@@ -99,7 +99,7 @@ public class CreatureInspectScript : MonoBehaviour
     {
         alertText.text = message;
         alertText.gameObject.SetActive(true);
-        StartCoroutine(HideAlertAfterDelay(3f));  // Hide after 3 seconds
+        StartCoroutine(HideAlertAfterDelay(7f));  // Hide after 3 seconds
     }
 
     // Coroutine to hide alert after a delay

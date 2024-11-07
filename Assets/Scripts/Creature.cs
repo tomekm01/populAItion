@@ -17,6 +17,11 @@ public class Creature
         this.name = name;
     }
 
+    public Creature()
+    {
+
+    }
+
     public string getPrompt()
     {
         string promptHead = this.head.Replace(" ", "-");
