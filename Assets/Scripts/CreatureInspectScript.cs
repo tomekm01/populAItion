@@ -19,9 +19,12 @@ public class CreatureInspectScript : MonoBehaviour
     public Button showImageButton;
     public Button xButton;
     public Image creatureImage;
+    public Text alertText;
+    public GameObject errorPanel;
+    public Button closeErrorButton;
 
     private Creature currentCreature;
-    private Text alertText; // For displaying alerts
+
     // Set creature data in the UI
     public void SetCreature(Creature creature)
     {
@@ -38,6 +41,7 @@ public class CreatureInspectScript : MonoBehaviour
         deleteButton.onClick.AddListener(DeleteCreature);
         showImageButton.onClick.AddListener(ShowImage);
         xButton.onClick.AddListener(CloseImage);
+        closeErrorButton.onClick.AddListener(CloseErrorPanel);
     }
 
     // Method to check for internet connectivity
@@ -97,16 +101,9 @@ public class CreatureInspectScript : MonoBehaviour
     // Show alert method
     void ShowAlert(string message)
     {
+        errorPanel.SetActive(true);
         alertText.text = message;
-        alertText.gameObject.SetActive(true);
-        StartCoroutine(HideAlertAfterDelay(7f));  // Hide after 3 seconds
-    }
-
-    // Coroutine to hide alert after a delay
-    IEnumerator HideAlertAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        alertText.gameObject.SetActive(false);
+        
     }
 
     public void CloseImage()
@@ -123,5 +120,10 @@ public class CreatureInspectScript : MonoBehaviour
     public void GoBack()
     {
         panelInspect.SetActive(false);
+    }
+
+    public void CloseErrorPanel()
+    {
+        errorPanel.SetActive(false);
     }
 }

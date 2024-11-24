@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class CreatureListManagerScript : MonoBehaviour
 {
-    public GameObject
-        creatureUIPrefab; // Assign this in the Inspector (your prefab with the button/UI to represent a creature)
-
+    public GameObject creatureUIPrefab; // Assign this in the Inspector (your prefab with the button/UI to represent a creature)
     public Transform contentPanel; // Assign this to the Content object of your ScrollView
     public GameObject creatureInspectPanel;
 
@@ -58,7 +56,7 @@ public class CreatureListManagerScript : MonoBehaviour
         }
     }
 
-    // This is an example method to handle inspecting a creature
+    // Method to handle inspecting a creature
 
     void InspectCreature(Creature creature)
     {
