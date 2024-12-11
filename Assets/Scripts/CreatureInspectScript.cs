@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -45,16 +46,44 @@ public class CreatureInspectScript : MonoBehaviour
     }
 
     // Method to check for internet connectivity
-    bool IsConnectedToInternet()
+    async Task<bool> IsConnectedToInternetAsync()
     {
-        return Application.internetReachability != NetworkReachability.NotReachable;
+        const string testUrl = "https://example.com"; // A simple and widely trusted endpoint.
+        UnityWebRequest request = UnityWebRequest.Get(testUrl);
+
+        var operation = request.SendWebRequest();
+        float timeout = 5f; // Timeout in seconds.
+        float startTime = Time.time;
+
+        // Await the request completion or timeout.
+        while (!operation.isDone)
+        {
+            if (Time.time - startTime > timeout)
+            {
+                Debug.LogWarning("Internet connectivity check timed out.");
+                return false; // Timed out, assume no connectivity.
+            }
+            await Task.Yield();
+        }
+
+        // Check for success.
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Internet connection confirmed.");
+            return true;
+        }
+        else
+        {
+            Debug.LogError($"Internet check failed with status: {request.result}, Response Code: {request.responseCode}");
+            return false; // Failure, assume no connectivity.
+        }
     }
 
     // Show image method
-    public void ShowImage()
+    public async void ShowImage()
     {
         // Check network connectivity
-        if (!IsConnectedToInternet())
+        if (await IsConnectedToInternetAsync() == false)
         {
             ShowAlert("No internet connection. Cannot show the image.");
             return;

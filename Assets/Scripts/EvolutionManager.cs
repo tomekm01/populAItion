@@ -142,8 +142,8 @@ public class EvolutionManager : MonoBehaviour
 
                 string mutation = await FetchAIResponseAsync(selectedPrompt);
                 Debug.Log("Mutation acquired.");
-                partToMutate = UnityEngine.Random.Range(1, 4);
 
+                partToMutate = UnityEngine.Random.Range(1, 4);
                 if (partToMutate == 1) head = mutation;
                 else if (partToMutate == 2) body = mutation;
                 else legs = mutation;
@@ -165,7 +165,7 @@ public class EvolutionManager : MonoBehaviour
                 else
                 {
                     // Retry: request a completely random name
-                    name = await FetchAIResponseAsync("reply-with-max-3-words-randomly-generate-a-unique-simple-name-never-heard-before");
+                    name = await FetchAIResponseAsync($"reply-with-max-3-words-randomly-generate-a-unique-simple-name-never-heard-before-{DateTime.UtcNow.Ticks}");
                 }
                 nameExists = currentCreatures.Exists(c => c.name == name);
                 retryCount++;

@@ -97,8 +97,9 @@ public class CreatureCreationScript : MonoBehaviour
     // Method to sanitize input by removing problematic characters
     private string SanitizeInput(string input)
     {
-        // Remove all non-alphanumeric characters except underscores and dashes
-        string sanitized = Regex.Replace(input, @"[^a-zA-Z0-9_\-]", "");
+        // Remove all non-alphanumeric characters except underscores, spaces and dashes
+        string sanitized = Regex.Replace(input, @"[^a-zA-Z0-9_\-\s]", "");
+
 
         return sanitized;
     }

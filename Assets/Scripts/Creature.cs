@@ -22,6 +22,7 @@ public class Creature
 
     }
 
+    //Method creating prompt
     public string getPrompt()
     {
         string promptHead = this.head.Replace(" ", "-");
